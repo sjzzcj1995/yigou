@@ -22,7 +22,80 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 // https://github.com/chimurai/http-proxy-middleware
 var proxyTable = config.dev.proxyTable
 
-var app = express()
+var app = express();
+var homeData = require('../json/firs.json');
+var yiData = require('../json/two.json');
+var comData = require('../json/diannao.json');
+var codeData = require('../json/shuma.json');
+var foodData = require('../json/meishi.json');
+var tideData = require('../json/chaoliu.json');
+var rimData = require('../json/zhoubian.json');
+var restData = require('../json/qita.json');
+
+var apiRouter = express.Router();
+
+apiRouter.get('/hm', function (req, res){
+  res.json({
+    errno: 0,
+    data: homeData.result.list
+  });
+});
+
+apiRouter.get('/yi', function (req, res){
+  res.json({
+    errno: 0,
+    data: yiData.result.list
+  });
+});
+
+apiRouter.get('/computer', function (req, res){
+  res.json({
+    errno: 0,
+    data: comData.result.list
+  });
+});
+
+apiRouter.get('/code', function (req, res){
+  res.json({
+    errno: 0,
+    data: codeData.result.list
+  });
+});
+
+apiRouter.get('/food', function (req, res){
+  res.json({
+    errno: 0,
+    data: foodData.result.list
+  });
+});
+
+apiRouter.get('/tide', function (req, res){
+  res.json({
+    errno: 0,
+    data: tideData.result.list
+  });
+});
+
+apiRouter.get('/rim', function (req, res){
+  res.json({
+    errno: 0,
+    data: rimData.result.list
+  });
+});
+
+apiRouter.get('/rest', function (req, res){
+  res.json({
+    errno: 0,
+    data: restData.result.list
+  });
+});
+
+app.use('/api', apiRouter);
+
+
+
+
+
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {

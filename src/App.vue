@@ -18,7 +18,7 @@
         <img src="./assets/l4.jpg">
         <p>发现</p>
       </a>
-      <a href="#/Car" v-on:click='num=4' v-bind:class="{active:num==4}">
+      <a href="#/Mine" v-on:click='num=4' v-bind:class="{active:num==4}">
         <img src="./assets/l5.jpg">
         <p>购物车</p>
       </a>
@@ -45,6 +45,7 @@ export default {
   .app{
     .foot{
       width:100%;
+      background:#fff;
       position:fixed;
       bottom:0;
       left:0;
@@ -66,7 +67,7 @@ export default {
       color:#6c6c6c;
     }
     .active>p{
-      color:rgb(139,99,199);
+      color:red;
     }
   }
 </style>

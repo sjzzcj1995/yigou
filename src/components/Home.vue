@@ -63,9 +63,19 @@
    			<span>总需人次</span>
    		</p>
    		<ul>
-   			<li></li>
+   			<li v-for="item in data" class="shop-list">
+   				<a href="">
+   					<img :src="item.goods.gpic">
+   					<p>{{item.goods.gname}}</p>
+   					<p>
+   						揭晓进度&nbsp;<label>{{item.goods.numb}}%</label>&nbsp;
+   						<span>立即购买</span>
+   					</p>
+   				</a>
+   			</li>
    		</ul>
    	</div>
+   	<br><br><br>
   </div>
 </template>
 
@@ -74,14 +84,14 @@
 
 export default {
   name: 'home',
-  /*props: {
-  	home: {
-  		type: Object,
+  props: {
+  	data: {
+  		type: Object		
   	}
-  },*/
+  },
   data() {
   	return {
-  		homeli: []
+  		homeli: {}
   	};
   },
   created() {
@@ -89,8 +99,8 @@ export default {
   		response = response.body;
   		
   		if (response.errno === ERR_OK) {
-  			this.home = response.data;
-  			console.log(this.home);
+  			this.data = response.data;
+  			console.log(this.data);
   		}
   	});
   }
@@ -216,6 +226,40 @@ export default {
 		flex:1;
 		font-size:0.45rem;
 		text-align:center;
+	}
+	#homeList>ul{
+		width:100%;
+		overflow:hidden;
+	}
+	.shop-list{
+		width:50%;
+		float:left;
+		border:1px solid #eee;
+		box-sizing:border-box;
+		padding:0.5rem 0;
+	}
+	.shop-list>a{
+		color:rgb(89,57,82);
+	}
+	.shop-list>a>img{
+		margin-left:25%;
+	}
+	.shop-list>a>p:nth-child(2){
+		font-size:0.6rem;
+	}
+	.shop-list>a>p:nth-child(3){
+		font-size:0.45rem;
+		margin-top:0.3rem;
+	}
+	.shop-list>a>p:nth-child(3)>label{
+		color:blue;
+	}
+	.shop-list>a>p:nth-child(3)>span{
+		font-size:0.5rem;
+		border:1px solid red;
+		padding:0.15rem;
+		color:red;
+		border-radius:1px;
 	}
 
 }
